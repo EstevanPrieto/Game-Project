@@ -45,8 +45,8 @@ one_n = Room('Area One - North', 'There is nothing to be seen in either directio
 one_s = Room('Area One - South', 'There is nothing to be seen in either direction.', 'one', None, None, 'two_s')
 two = Room('Area Two', 'Are you even listening to what I just told you?', 'two_n', 'one', 'two_s', 'three')
 two_n = Room('Area Two - North', 'I told you there is nothing in either direction. At least listen for once in your life.', None, 'one_n', 'two', 'three_n')
-two_s = Room('Area Two - South', 'OK I AM TIRED OF YOUR- wait. Is that something glistening in the ground? Well gues what, Deadbrain? You lucked out. Again. ', 'two', 'one_s', None, 'three_s')
-three = Room('Area Three', 'I SAID THERE IS NOTHING HERE. STOP TRYING TO DIE OUT HERE. BE SMART. Oh wait. I forgot that you lack intelligence. I mean, which smart person loses their memory?', 
+two_s = Room('Area Two - South', 'OK I AM TIRED OF YOUR-- wait. Is that something glistening in the ground? Well guess what, Deadbrain? You lucked out. Again. ', 'two', 'one_s', None, 'three_s')
+three = Room('Area Three', 'I SAID THERE IS NOTHING HERE. STOP TRYING TO DIE OUT HERE. BE SMART.', 
 'three_n', 'two', 'three_s', 'four')
 three_n = Room('Area Three - North', 'TBA', None, 'two_n', 'three', None)
 three_s = Room('Area Three - South', 'TBA', 'three', 'two_s', None, None)
@@ -71,7 +71,7 @@ ring = Room('Ring of Trees', 'TBA', None, None, None, 'trees')
 final = Room('The Secret Room', 'Finally. I\'m surprised someone as pathetic as you could manage to even unlock this poop hole. Are you proud of yourself? DON\'T BE. From what I can tell you, there is literally nothing here except some other person. I do not even want to know how they managed to survive here for so long without any resources. Eww, I can\'t imagine his hygiene issues. Talk about nasty. I\'ll let you talk to him.', 
 'arm', None, None, None)
 
-final == False
+final = False
 
 #sets your location to the starting room in the game
 node = start 
@@ -93,23 +93,32 @@ while True:
 class Character:
     def __init__(self, name):
         self. name = name
-character_one = Character('Laurel')
-character_two = Character('Gaby')
-character_three = Character('Eric')
-character_four = Character('Carol')
-character_five = Character('Gaby')
+character_one = Character('Regina')
+character_two = Character('Emma')
+character_three = Character('David')
+character_four = Character('Cora')
+character_five = Character('Henry')
 
 class Dialogue:
-    def __init__(self, convo):
+    def __init__(self, convo, response_one, response_two):
         self.convo = convo
+        self.response_one = response_one
+        self.response_two = response_two
     
     def say(self, person):
         print person.name+':"'+self.convo+'"'
-    
-    def display_options(convo):
-        print '\nYour Options:'
-        for i,p in enumerate(convo['PATHS']):
-            print '\t%d: "%s"' % (i, p[2])
+
+user_response = raw_input('> ')
+node = None
+intro = Dialogue('Hello, my name is Regina. I was the formal Queen of the Castle of the North before the incident. Before, I had so much power, but now I don\'t.')
+
+
+'''node = intro
+if user_reponse == response_one:
+    node = intro_pt2
+    print intro_pt2.convo'''
+
+
 
 
 #--------------------------------------------------------------
