@@ -99,6 +99,7 @@ character_two = Character('Emma')
 character_three = Character('David')
 character_four = Character('Cora')
 character_five = Character('Kyle')
+character_five = Character('Henry')
 
 class Dialogue:
     def __init__(self, convo, response_one, response_two):
@@ -108,7 +109,10 @@ class Dialogue:
     
     def say(self, person):
         print person.name+':"'+self.convo+'"'
-    
+
+user_response = raw_input('> ')
+node = None
+intro = Dialogue('Hello, my name is Regina. I was the formal Queen of the Castle of the North before the incident. Before, I had so much power, but now I don\'t.')
 
 node = None
 
