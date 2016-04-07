@@ -58,7 +58,7 @@ one_n = Room('Area One - North', 'There is nothing to be seen in either directio
 one_s = Room('Area One - South', 'There is nothing to be seen in either direction.', 'one', None, None, 'two_s')
 two = Room('Area Two', 'Are you even listening to what I just told you?', 'two_n', 'one', 'two_s', 'three')
 two_n = Room('Area Two - North', 'I told you there is nothing in either direction. At least listen for once in your life.', None, 'one_n', 'two', 'three_n')
-two_s = Room('Area Two - South', 'OK I AM TIRED OF YOUR-- wait. Is that something glistening in the ground? Well guess what, Deadbrain? You lucked out. Again. ', 'two', 'one_s', None, 'three_s')
+two_s = Room('Area Two - South', 'OK I AM TIRED OF YOUR-- wait. Is that something glistening in the ground? Well guess what, Deadbrain? You lucked out. Again.', 'two', 'one_s', None, 'three_s')
 three = Room('Area Three', 'I SAID THERE IS NOTHING HERE. STOP TRYING TO DIE OUT HERE. BE SMART.', 
 'three_n', 'two', 'three_s', 'four')
 three_n = Room('Area Three - North', 'I am not even going to.', None, 'two_n', 'three', None)
@@ -117,13 +117,14 @@ while True:
 class Character:
     def __init__(self, name):
         self. name = name
-        
+#Characters you will encounter in the game        
 character_one = Character('Regina the Queen')
 character_two = Character('David the Mechanical Beast')
 character_three = Character('Emma the Dragon')
 character_four = Character('Cora the Yeti')
-character_five = Character('Kyle')
+character_five = Character('Cookie')
 
+#Sets up the dialogue and your choices
 class Dialogue:
     def __init__(self, convo, response_one, response_two):
         self.convo = convo
@@ -134,9 +135,9 @@ class Dialogue:
         print person.name+':"'+self.convo+'"'
 
 #Regina's Dialogue 
-node = None
 
-intro = Dialogue('Hello, my name is Regina. I was the formal Queen of the Castle of the North before the incident. Before, I had so much power, but now, not so much.', 'What happened here?', 'Where am I?')
+intro = Dialogue('Hello, my name is Regina. I was the formal Queen of the Castle of the North before the incident. Before, I had so much power, but now, not so much.', 
+'What happened here?', 'Where am I?')
 happen = Dialogue('I do not know. All I remember was that I was enjoying my time in my palace. Everything was normal. Then, I found myself here. How could such hell break loose on a once beautiful land? Speaking of which, where are you from?', 
 'I am from the Center Camp across the bridge.', 
 'I don\'t know. I just woke up in ruins and I followed this path.')
@@ -155,62 +156,78 @@ prompt = Dialogue('From what I can think of, that is all I can tell you. Is ther
 'That is kind of you, but I do not need any help at the moment. Thank you so much though!') 
 decline = Dialogue('Ok then. You better be on your way then on your empty journey. Be careful.', None, None)
 
-node = intro
-
+#intiates Regina's dialogue
 print intro.say(character_one)
-user_response = raw_input('> ')
+print '--------------------------------------------------'
+print "Type one of the following choices below EXACTLY as it is. This game is case sensitive."
+print intro.response_one
+print intro.response_two
 
-if user_response == intro.response_one:
-    node = happen
-    print happen.convo
+#Gives you your dialogue choices.
+while True:    
+    user_response = raw_input('> ')
 
-if user_response == intro.response_two:
-    node = location
-    print location.convo
+    if user_response == intro.response_one:
+        print happen.say(character_one)
+        print '--------------------------------------------------'
+        print "Type one of the following choices below EXACTLY as it is. This game is case sensitive."
+        print happen.response_one
+        print happen.response_two
 
-if user_response == happen.response_two:
-    node = oh_ruins
-    print oh_ruins.convo
+    if user_response == intro.response_two:
+        print location.say(character_one)
+        print '--------------------------------------------------'
+        print "Type one of the following choices below EXACTLY as it is. This game is case sensitive."
+        print location.response_one
+        print location.response_two
 
-if user_response == happen.response_one:
-    node = pity
-    print pity.convo
+    if user_response == happen.response_two:
+        print oh_ruins.say(character_one)
+        print '--------------------------------------------------'
+        print "Type one of the following choices below EXACTLY as it is. This game is case sensitive."
+        print oh_ruins.response_one
+        print oh_ruins.response_two
 
-if user_response == location.response_one:
-    node = notebook
-    print notebook.convo
+    if user_response == happen.response_one:
+        print pity.say(character_one)
+        print '--------------------------------------------------'
+        print "Type one of the following choices below EXACTLY as it is. This game is case sensitive."
+        print pity.response_one
+        print pity.response_two
+        
+    if user_response == location.response_one:
+        print notebook.say(character_one)
 
-if user_response == location.response_two:
-    node = prompt
-    print prompt.convo
-
-if user_response == pity.response_one:
-    node = notebook
-    print notebook.convo
+    if user_response == location.response_two:
+        print prompt.say(character_one)
+        print '--------------------------------------------------'
+        print "Type one of the following choices below EXACTLY as it is. This game is case sensitive."
+        print prompt.response_one
+        print prompt.response_two
+        
+    if user_response == pity.response_one:
+        print notebook.say(character_one)
     
-if user_response == pity.response_two:
-    node = decline
-    print decline.convo
+    if user_response == pity.response_two:
+        print decline.say(character_one)
+        
+    if user_response == oh_ruins.response_one:
+        print notebook.say(character_one)
 
-if user_response == oh_ruins.response_one:
-    node = notebook
-    print notebook.convo
+    if user_response == oh_ruins.response_two:
+        print decline.say(character_one)
+        print '-------------------------------------------'
+        print "Type one of the following choices below EXACTLY as it is. This game is case sensitive."
+        print decline.response_one
+        print decline.response_two
 
-if user_response == oh_ruins.response_two:
-    node = decline
-    print decline.convo
+    if user_response == prompt.response_one:
+        print notebook.say(character_one)
 
-if user_response == prompt.response_one:
-    node = notebook
-    print notebook.convo
-
-if user_response == prompt.response_two:
-    node = decline
-    print decline.convo
-
+    if user_response == prompt.response_two:
+        print decline.say(character_one)
+        
 #David's Dialogue
-
-node = None
 
 david_intro = Dialogue('Please don\'t hurt me! I\'m just a completely harmless, dismantled mechanical beast. Please, I beg you!', 'What happened?', 'Don\'t worry, I\'m harmless too.')
 harmless = Dialogue('Thank you so much! My name is David by the way. I thought humans like you were dead by now. I saw what happened at the camp from a distance. Sadly I could not help due to my current state. It was truly a tragic sight. Can I help you with something?', 
@@ -230,60 +247,69 @@ key_one_location = Dialogue('If you travel past me, at some point there is a pla
 something = Dialogue('You should keep travelling. Who knows? You might just come across something in this wasteland. Just watch out.', None, None)
 rude_end = Dialogue('Oh ok. I understand, it isn\'t my business to intervene what is your pivacy. Forgive me for that. You should be on your way.', None, None)
 
-node = david_intro
-
 print david_intro.say(character_two)
+print '--------------------------------------------------'
+print "Type one of the following choices below EXACTLY as it is. This game is case sensitive."
+print david_intro.response_one
+print david_intro.response_two
 
 if user_response == david_intro.response_one:
-    node = what_happened
-    print what_happened.convo
+    print what_happened.say(character_two)
+    print '--------------------------------------------------'
+    print "Type one of the following choices below EXACTLY as it is. This game is case sensitive."
+    print what_happened.response_one
+    print what_happened.response_two
 
 if user_response == david_intro.response_two:
-    node = harmless
-    print harmless.convo
+    print harmless.say(character_two)
+    print '--------------------------------------------------'
+    print "Type one of the following choices below EXACTLY as it is. This game is case sensitive."
+    print harmless.response_one
+    print harmless.response_two
 
 if user_response == what_happened.response_one:
-    node = incident
-    print incident.convo
+    print incident.say(character_two)
+    print '--------------------------------------------------'
+    print "Type one of the following choices below EXACTLY as it is. This game is case sensitive."
+    print incident.response_one
+    print incident.response_two
 
 if user_response == what_happened.response_two:
-    node = apology
-    print apology.convo
+    print apology.say(character_two)
+    print '--------------------------------------------------'
+    print "Type one of the following choices below EXACTLY as it is. This game is case sensitive."
+    print apology.response_one
+    print apology.response_two
 
 if user_response == harmless.response_one:
-    node = something
-    print something.convo
+    print something.say(character_two)
+    print '--------------------------------------------------'
+    print "Type one of the following choices below EXACTLY as it is. This game is case sensitive."
+    print something.response_one
+    print something.response_two
 
 if user_response == harmless.response_two:
-    node = rude_end
-    print rude_end.convo
+    print rude_end.say(character_two)
 
 if user_response == incident.response_one:
-    node = bye
-    print bye.convo
+    print bye.say(character_two)
 
 if user_response == incident.response_two:
-    node = key_one_location
-    print key_one_location.convo
+    print key_one_location.say(character_two)
 
 if user_response == apology.response_one:
-    node = bye
-    print bye.convo
+    print bye.say(character_two)
 
 if user_response == apology.response_two:
-    node = key_one_location
-    print key_one_location.convo
+    print key_one_location.say(character_two)
     
-
-
 #Emma's Dialogue
+
+fuego = Dialogue("Do NOT tempt me, human. I WILL burn you.", "Chill out. I\'m just looking for something.", 'Fine then. I\'ll leave. Gosh.')
 
 #Cora's Dialogue
 
 #Kyle's Dialogue
-
-
-
 
 
 
