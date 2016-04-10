@@ -196,7 +196,7 @@ incident = Dialogue('No no no. I can\'t. I just can\'t. It\'s too much. I don\'t
 apology = Dialogue('Oh no, it\'s ok. Don\'t worry about it. I can relax here and admire the view, even if it is horrendous and disturbing. I hope you do regain your memories. Good luck.', 
 'Thank you. I better get going then. Good luck out here, David.', 
 'Don\'t worry, David. I can fix this. I just need to gather the four keys so I can unlock the vault in my camp that is holding the cure. Do you know anything that can help?')
-bye = Dialogue('Be careful out there, David. I am sorry for not being of much help. Farewell.', None, None)
+bye = Dialogue('Be careful out there. I am sorry for not being of much help. Farewell.', None, None)
 key_one_location = Dialogue('If you travel past me, at some point there is a place where a shiny object can be found. Occassionally I can see its shine from here, but I can\'t go investigate since I am dismantled. You should go check it out. Just be careful out there.', 
 None, None)
 something = Dialogue('You should keep travelling. Who knows? You might just come across something in this wasteland. Just watch out.', 
